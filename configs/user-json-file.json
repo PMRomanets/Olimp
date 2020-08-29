@@ -1,0 +1,24 @@
+{
+    "users_permissions": {
+        "rolikova@bigmir.com": "admin",
+        "ordinary_user": "user",
+        "pn_romanets@yahoo.com": "admin",
+        "v_shulyak@ukr.net": "K",
+        "romanets.p@novaposhta.ua": "admin"
+    },
+    "users_classes": {
+        "leo_user": "employee_7204",
+        "ordinary_user": "employee_5063",
+        "user": "employee_5063",
+        "eee": "employee_5063",
+        "romanets.p@novaposhta.ua": "chief"
+    },
+    "users": {
+               "rolikova@bigmir.com": "Veronika2015",
+        "ordinary_user": "user",
+        "pn_romanets@yahoo.com": "mypassword@#",
+        "v_shulyak@ukr.net": "Olimp@#2020",
+        "romanets.p@novaposhta.ua": "Veronika2015"
+    }
+
+}
