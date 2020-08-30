@@ -23,6 +23,9 @@
   "main_mobile_phone_number": "+38(095) 85 27 400",
   "viber_phone_number": "+38(063) 46 94 133",
     "club_email": "olimp.sportclub@gmail.com",
+  "club_address": "м. Київ, вул. Білицька 20, п. 147",
+  "way_to_connect": {"main_mobile_phone_number": "мобільний", "viber_phone_number": "мережа Viber",
+    "club_email": "електронна адреса", "club_address": "адреса спортзалу"},
   "footer_style": {"fontColor": "#D4AF37","backgroundColor": "#D4AF37", "display": "flex", "fontSize": 12, "font-family": "Arial", "margin-right": "50%"}
 
 }
