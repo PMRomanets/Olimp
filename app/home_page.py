@@ -11,19 +11,31 @@ import flask
 # def get_base_template(server, body, title, user_name):
 from flask_login import LoginManager
 from configs.config import parameter
+from os.path import join as path_join
+from os.path import exists as path_exists
+import base64
 # from config.config import user_parameter
 # from cached_property import cached_property
 
 
 def get_layout():
+    background_ = []
+    assets_dir_path = parameter["assets_dir"]
+    image_filename = path_join(assets_dir_path, f"home_background.jpg")
+    if path_exists(image_filename):
+        encoded_image = base64.b64encode(open(image_filename, 'rb').read())
+        img_child = html.Img(src=f'data:image/jpj;base64,{encoded_image.decode()}', className=f"img",
+                             id=f"img_id")
+        background_.append(img_child)
     return html.Div(children=[
         html.Link(href='/assets/my.css' + "?t=" + str(time.time()), rel='stylesheet'),
         base.get_header("ДИТЯЧО-ЮНАЦЬКИЙ СПОРТИВНИЙ КЛУБ \"ОЛІМП\""),
         html.Div(children=get_navigation(), className="float-clear"),
         html.Div(id='output-container',
                  className="home-text",
-                 children=[dash_dangerously_set_inner_html.DangerouslySetInnerHTML("""   """)]),
-        html.Div(style=parameter["footer_style"],
+                 children=[html.H1("""РАДО ПРОВЕДЕМ ВАС У СВІТ СПОРТУ!""")])
+        , html.Div(children=background_)
+        ,html.Div(style=parameter["footer_style"],
                  children=[" дзвоніть нам: " + str(parameter["main_mobile_phone_number"])
                      , " пішіть у Viber:" + str(parameter["viber_phone_number"])
                      , " пішіть на електронну пошту:" + str(parameter["club_email"])])
