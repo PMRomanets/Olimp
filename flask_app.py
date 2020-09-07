@@ -91,6 +91,10 @@ dir_ = path_join(asset_dir, "summertime")
 interesting_d_obj = InterestingClass("/", "Цікавинки у світі танцю", dir_, fig_ext="jpeg", limit_objects_number=1)
 interesting_d_app = interesting_d_obj.get_app(app, "/summertime/")
 
+dir_ = path_join(asset_dir, "about_club")
+interesting_d_obj = InterestingClass("/", "Втілюйте мрії у життя разом з нами!", dir_, fig_ext="png", limit_objects_number=1)
+interesting_d_app = interesting_d_obj.get_app(app, "/about_club/")
+
 contacts_obj = ContactsClass("/", "Вдячні за Вашу цікавіть до клубу! Зв'яжіться з нами!")
 contacts_app = contacts_obj.get_app(app, "/contacts/")
 # obj_main = Schedules(f"/home/", "НА ГОЛОВНУ")
