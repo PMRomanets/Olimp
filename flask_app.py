@@ -10,7 +10,8 @@ from app.interesting_app import InterestingClass
 from app.home_page import get_app
 from app.contacts_app import ContactsClass
 from app.staff_only_login import LoginProcess, User
-
+from flask import send_from_directory, url_for
+from os.path import join as path_join
 
 app = Flask(__name__)
 
@@ -71,6 +72,11 @@ def fchief():
     print(current_user.name)
     return app_home.index()
 
+@app.route('/favicon.ico')
+@login_required
+def favicon():
+    print(current_user.name)
+    return send_from_directory(path_join(parameter["assets_dir"]), "favicon.ico", mimetype="image")
 
 asset_dir = parameter["assets_dir"]
 dummy_text = "СТОРІНКА ЗНАХОДИТСЯ НА СТАДІЇ РОЗРОБКИ"
@@ -103,5 +109,6 @@ contacts_obj = ContactsClass("/", "Вдячні за Вашу цікавіть �
 contacts_app = contacts_obj.get_app(app, "/contacts/")
 # obj_main = Schedules(f"/home/", "НА ГОЛОВНУ")
 app_home = get_app(app, f"/")
+# app.add_url_rule('/favicon.ico', redirect_to=url_for('static', filename='favicon.ico'))
 if __name__ == '__main__':
     app.run(port=5500, debug=True)
