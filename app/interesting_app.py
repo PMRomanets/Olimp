@@ -47,27 +47,35 @@ class InterestingClass:
 
             # for txt_object in (, f"body{idx}.txt", f"ref{idx}.txt"):
             header_filename = path_join(self.assets_dir_path, f"header{idx}.txt")
-            with open(header_filename, "r") as file:
-                for txt_line in file.readlines():
-                    header_child = html.H1(children=txt_line)
-                    inner_part_.append(header_child)
-
+            if path_exists(header_filename):
+                with open(header_filename, "r") as file:
+                    for txt_line in file.readlines():
+                        header_child = html.H1(children=txt_line)
+                        inner_part_.append(header_child)
+            else:
+                print(f"no header file {idx}")
             body_filename = path_join(self.assets_dir_path, f"body{idx}.txt")
-            with open(body_filename, "r") as file:
-                for txt_line in file.readlines():
-                    body_child = html.Li(children=txt_line)
-                    inner_part_.append(body_child)
+            if path_exists(body_filename):
+                with open(body_filename, "r") as file:
+                    for txt_line in file.readlines():
+                        body_child = html.Li(children=txt_line)
+                        inner_part_.append(body_child)
+            else:
+                print(f"no body file {idx}")
             inner_part_.append(html.Br())
 
-            body_filename = path_join(self.assets_dir_path, f"ref{idx}.txt")
-            with open(body_filename, "r") as file:
-                lines_ = file.readlines()
-                if len(lines_)>0:
-                    inner_part_.append(html.Div("Більше інформації за посиланнями:"))
-                for ref_idx, txt_line in enumerate(lines_):
-                    ref_child = html.A(children=f"see {idx}.{ref_idx}", href=txt_line)
-                    inner_part_.append(ref_child)
-                    inner_part_.append(html.Br())
+            ref_filename = path_join(self.assets_dir_path, f"ref{idx}.txt")
+            if path_exists(ref_filename):
+                with open(ref_filename, "r") as file:
+                    lines_ = file.readlines()
+                    if len(lines_)>0:
+                        inner_part_.append(html.Div("Більше інформації за посиланнями:"))
+                    for ref_idx, txt_line in enumerate(lines_):
+                        ref_child = html.A(children=f"see {idx}.{ref_idx}", href=txt_line)
+                        inner_part_.append(ref_child)
+                        inner_part_.append(html.Br())
+            else:
+                print(f"no ref file {idx}")
             inner_part_.append(html.Br())
         # return html.Div(children=inner_part_)
         # title = "ЦІКАВО ЗНАТИ:"

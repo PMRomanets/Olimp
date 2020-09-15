@@ -58,7 +58,7 @@ class Schedules:
                                   , children=[dcc.Dropdown(
                     id='instructor-dropdown',
                     options=opt_,
-                    value=list(parameter["K"].keys())[0],
+                    value=opt_[0]["value"],
                     placeholder='Please select instructor name',
                     style=dict(
                     width='90%',
@@ -86,7 +86,7 @@ class Schedules:
         html.Img(src=f'data:image/png;base64,{encoded_image_download.decode()}', className="download_img",
                  id="download_img_id", n_clicks=0, title="Вивантаження розкладу (*.xlsx, *.csv)"),
         html.Img(src=f'data:image/png;base64,{encoded_image_view.decode()}', className="view_img",
-                 id="view_img_id", n_clicks=0, title="Перегляд розкладу")]
+                 id="view_img_id", n_clicks=0, title="Приховати розклад")]
         inner_part_.append(html.Div(on_click_images))
         # inner_part_.append(html.Button(id='submit-val', n_clicks=0, children= [html.Abbr(title="somth.-"), "g"]))
         inner_part_.append(html.Div(id='input-on-submit'))
@@ -180,6 +180,8 @@ class Schedules:
                       [Input("view_img_id", 'n_clicks'), Input('sport-types-radio', 'value'), Input('instructor-dropdown', 'value')])
         def look_at_the_shedule(n_click, s_type, instructor):
             if n_click & 1:
+                return ""
+            else:
                 df = self._get_current_dataframe(s_type, instructor)
 
                 return dt.DataTable(
@@ -193,8 +195,7 @@ class Schedules:
                 'fontWeight': 'bold'
                 },
                 data=df.to_dict('records'))
-            else:
-                return ""
+
 
 
         @app.callback(Output('instructor-dropdown1', 'children'),
@@ -205,7 +206,7 @@ class Schedules:
             return dcc.Dropdown(
                     id='instructor-dropdown',
                     options=opt_,
-                    value=parameter["K"]['0'],
+                    value="0",
                     placeholder='Please select instructor name',
                     style=dict(
                     width='90%',
