@@ -5,4 +5,7 @@
 */__pycache__
 **/__pycache__
 __pycache__/
+configs/config.json
+configs/*.json
+
 

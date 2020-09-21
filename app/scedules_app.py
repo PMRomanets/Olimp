@@ -104,7 +104,7 @@ class Schedules:
         if os.path.exists(filename):
             df = pd.read_csv(filename)
         else:
-            df = pd.DataFrame(columns=["день тиждня", "час", "група"])
+            df = pd.DataFrame(columns=["день тижня", "час", "група"])
         return df
 
     def _get_instructor_photo(self, s_type, instructor):

@@ -14,7 +14,7 @@
   "stuff_only_permissions_list": {"chief": ["K", "Y", "D", "about", "politics"], "K": ["K"], "D": ["D"], "Y": ["Y"]},
   "translate_stuff_only_permissions": {"K": "Цікавинки (карате)", "Y": "Цікавинки (йога)", "D": "Цікавинки (танці)", "about": "Про клуб", "politics": "Політика клубу"},
   "user-json-file": "/home/romanets/Desktop/PyCharmP/Olimp/configs/user-json-file.json",
-  "K": {"0": "Романець Тетяна Борисівна", "1": "Шуляк Валерій Володимирович"},
+  "K": {"0": "Романець Тетяна Борисівна", "1": "Шуляк Валерій Олександрович"},
   "Y": {"0": "Інструктор відсутній"},
   "D": {"0": "Інструктор відсутній"},
    "dropdown_labels_style": {"display": "flex", "fontSize": 22, "font-family": "Arial", "margin": "1px 20px"},
