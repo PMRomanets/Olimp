@@ -13,6 +13,8 @@ from app.staff_only_login import LoginProcess, User
 from flask import send_from_directory, url_for
 from os.path import join as path_join
 
+
+
 app = Flask(__name__)
 
 
@@ -102,7 +104,7 @@ interesting_d_obj = InterestingClass("/", "Втілюйте мрії у житт
 interesting_d_app = interesting_d_obj.get_app(app, "/about_club/")
 
 dir_ = path_join(asset_dir, "about_instructors")
-interesting_d_obj = InterestingClass("/", "Наш досвід + Ваше бажання = резултат!", dir_, fig_ext="jpg", limit_objects_number=5)
+interesting_d_obj = InterestingClass("/", "Наш досвід + Ваше бажання = результат!", dir_, fig_ext="jpg", limit_objects_number=5)
 interesting_d_app = interesting_d_obj.get_app(app, "/about_instructors/")
 
 contacts_obj = ContactsClass("/", "Вдячні за Вашу цікавіть до клубу! Зв'яжіться з нами!")
