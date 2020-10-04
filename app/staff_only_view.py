@@ -88,13 +88,13 @@ class StuffOnly:
                              ]
 
             if self.add_table:
-                title = "РОЗКЛАД ДЛЯ СПІВРОБІТНИКІВ ТЕРМІНАЛІВ"
+                title = "--"
 
             elif self.add_graph:
                 if self.fact:
-                    title = "ПОРІВНЯННЯ ПРОГНОЗНИХ ТА ФАКТИЧНИХ ДАННИХ"
+                    title = "--"
                 else:
-                    title = "ПРОГНОЗ В МЕЖАХ ДНЯ"
+                    title = "--"
 
             inner_part_ = [html.Div(r_items, className="radiobuttons", style={'padding': 30}),
                            html.Div(dropdown_list, className="float-clear", style={'display': 'flex'})
