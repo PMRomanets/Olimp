@@ -3,6 +3,7 @@ import dash_html_components as html
 import random
 # from additional import security as sec
 import flask_login
+from configs.config import parameter
 
 class sec:
     @staticmethod
@@ -17,12 +18,18 @@ def get_navigation():
 
     ret = []
 
+    about_instructors = []
+    dic_ = parameter["sport_types_inv"]
+    for key_ in dic_.keys():
+        sport_kind = dic_[key_]
+        folder = html.Li(html.A(sport_kind, href=f'/about_instructors_{key_}'))
+        about_instructors.append(folder)
 
     about_dropdown = []
-    about_dropdown.append(html.Li(html.A('ПРО КЛУБ', href=f'/about_club/')))
-    about_dropdown.append(html.Li(html.A('ПРО ТРЕНЕРІВ', href=f'/about_instructors')))
+    about_dropdown.append(html.Li(html.A('ІСТОРІЯ', href=f'/club_history/')))
+    # about_dropdown.append(get_dropdown_menu_item("ПРО ТРЕНЕРІВ", about_instructors_K, '/about_instructors_K/'))
     about_dropdown.append(html.Li(html.A('ВНУТРІШНЯ ПОЛІТИКА', href=f'/about_politics')))
-    about_dropdown.append(html.Li(html.A('УСТАТКОВАНЯ ПРИМІЩЕННЯ', href=f'/about_politics')))
+    about_dropdown.append(html.Li(html.A('УСТАТКОВАНЯ ПРИМІЩЕННЯ', href=f'/about_equipment')))
 
     schedules_dropdown = []
     schedules_dropdown.append(html.Li(html.A('РОЗКЛАД ТРЕНУВАНЬ', href=f'/schedules/')))
@@ -33,11 +40,13 @@ def get_navigation():
     # additional_reports.append(html.Li(html.A('КОНТАКТИ', href=f'/contacts/')))
     # additional_reports.append(html.Li(html.A('КОНТАКТИ', href=f'/interesting/')))
     # additional_reports.append(html.Li(html.A('КОНТАКТИ', href=f'/stuff_only/')))
+
     interesting_dropdown = []
     interesting_dropdown.append(html.Li(html.A('СВІТ КАРАТЕ', href=f'/interesting_K/')))
     interesting_dropdown.append(html.Li(html.A('СВІТ ЙОГИ', href=f'/interesting_Y/')))
     interesting_dropdown.append(html.Li(html.A('СВІТ ТАНЦЮ', href=f'/interesting_D/')))
-    ret.append(get_dropdown_menu_item("ПРО НАС", about_dropdown, 'about/'))
+    ret.append(get_dropdown_menu_item("ПРО КЛУБ", about_dropdown, 'about/'))
+    ret.append(get_dropdown_menu_item("ПРО ТРЕНЕРІВ", about_instructors, 'about_instructors_K/'))
     ret.append(get_dropdown_menu_item("НАШ КАЛЕНДАР", schedules_dropdown, 'calendar/'))
     ret.append(get_dropdown_menu_item("РІЗНІ ЦІКАВИНКИ", interesting_dropdown, 'interesting/'))
     ret.append(get_dropdown_menu_item("ЗБОРИ", [], 'summertime/'))
@@ -48,8 +57,8 @@ def get_navigation():
     return ret
 
 
-def get_dropdown_menu_item(title, prediction_dropdown, href='#'):
-    if prediction_dropdown:
+def get_dropdown_menu_item(title, folder_dropdown, href='#'):
+    if folder_dropdown:
         return html.Ul(
             children=[
                 # ul list components
@@ -62,7 +71,7 @@ def get_dropdown_menu_item(title, prediction_dropdown, href='#'):
                         ),
                         html.Div(
                             className='dropdown-content',
-                            children=prediction_dropdown
+                            children=folder_dropdown
                         )
                     ]
 

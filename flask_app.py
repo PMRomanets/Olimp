@@ -99,13 +99,35 @@ dir_ = path_join(asset_dir, "summertime")
 interesting_d_obj = InterestingClass("/", "Літній відпочинок та тренування...", dir_, fig_ext="jpg", limit_objects_number=5)
 interesting_d_app = interesting_d_obj.get_app(app, "/summertime/")
 
-dir_ = path_join(asset_dir, "about_club")
+dir_ = path_join(asset_dir, "club_history")
 interesting_d_obj = InterestingClass("/", "Втілюйте мрії у життя разом з нами!", dir_, fig_ext="jpg", limit_objects_number=5)
-interesting_d_app = interesting_d_obj.get_app(app, "/about_club/")
+interesting_d_app = interesting_d_obj.get_app(app, "/club_history/")
 
-dir_ = path_join(asset_dir, "about_instructors")
+dir_ = path_join(asset_dir, "about_instructors_K")
 interesting_d_obj = InterestingClass("/", "Наш досвід + Ваше бажання = результат!", dir_, fig_ext="jpg", limit_objects_number=5)
-interesting_d_app = interesting_d_obj.get_app(app, "/about_instructors/")
+interesting_d_app = interesting_d_obj.get_app(app, "/about_instructors_K/")
+
+dir_ = path_join(asset_dir, "about_instructors_Y")
+interesting_d_obj = InterestingClass("/", "Наш досвід + Ваше бажання = результат!", dir_, fig_ext="jpg", limit_objects_number=5)
+interesting_d_app = interesting_d_obj.get_app(app, "/about_instructors_Y/")
+
+dir_ = path_join(asset_dir, "about_instructors_HH")
+interesting_d_obj = InterestingClass("/", "Наш досвід + Ваше бажання = результат!", dir_, fig_ext="jpg", limit_objects_number=5)
+interesting_d_app = interesting_d_obj.get_app(app, "/about_instructors_HH/")
+
+
+dir_ = path_join(asset_dir, "about_instructors_G")
+interesting_d_obj = InterestingClass("/", "Наш досвід + Ваше бажання = результат!", dir_, fig_ext="jpg", limit_objects_number=5)
+interesting_d_app = interesting_d_obj.get_app(app, "/about_instructors_G/")
+
+dir_ = path_join(asset_dir, "about_instructors_SH")
+interesting_d_obj = InterestingClass("/", "Наш досвід + Ваше бажання = результат!", dir_, fig_ext="jpg", limit_objects_number=5)
+interesting_d_app = interesting_d_obj.get_app(app, "/about_instructors_SH/")
+
+
+dir_ = path_join(asset_dir, "about_equipment")
+interesting_d_obj = InterestingClass("/", "Комфорт, Ефективність, Безпека", dir_, fig_ext="jpg", limit_objects_number=5)
+interesting_d_app = interesting_d_obj.get_app(app, "/about_equipment/")
 
 contacts_obj = ContactsClass("/", "Вдячні за Вашу цікавіть до клубу! Зв'яжіться з нами!")
 contacts_app = contacts_obj.get_app(app, "/contacts/")

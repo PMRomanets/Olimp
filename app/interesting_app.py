@@ -71,7 +71,8 @@ class InterestingClass:
                     if len(lines_)>0:
                         inner_part_.append(html.Div("Більше інформації за посиланнями:"))
                     for ref_idx, txt_line in enumerate(lines_):
-                        ref_child = html.A(children=f"see {idx}.{ref_idx}", href=txt_line)
+                        # ref_child = html.A(children=f"see {idx}.{ref_idx}", href=txt_line)
+                        ref_child = html.A(children=f"див. {ref_idx+1}): {txt_line}", href=txt_line)
                         inner_part_.append(ref_child)
                         inner_part_.append(html.Br())
             else:
