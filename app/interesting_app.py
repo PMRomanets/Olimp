@@ -25,13 +25,13 @@ from os.path import join as path_join
 from os.path import exists as path_exists
 
 class InterestingClass:
-    def __init__(self,  home_url, title, assets_dir_path, fig_ext="png", limit_objects_number=3):
+    def __init__(self,  home_url, title, assets_dir_path, fig_ext="png", limit_objects_number=3, sudo=False):
         self.title = title
         self.dummy = Dummy(home_url, "НА ГОЛОВНУ")
         self.assets_dir_path = assets_dir_path
         self.fig_ext = fig_ext
         self.limit_objects_number = limit_objects_number
-
+        self.sudo = sudo
 
     def get_layout(self):
         inner_part_ = []
@@ -42,6 +42,26 @@ class InterestingClass:
                 img_child = html.Img(src=f'data:image/{self.fig_ext};base64,{encoded_image.decode()}', className=f"img{idx}",
                          id=f"img_id_{idx}")
                 inner_part_.append(img_child)
+                if self.sudo:
+                    upload_child = dcc.Upload(id=f'upload-data-{idx}',
+                                              children=html.Div([
+                                                    f'перетягніть {self.fig_ext}-файл або ',
+                                                    html.A(f'ВИБЕРІТЬ {self.fig_ext}-ФАЙЛ')
+                                                ]),
+                                              style={
+                                                    'width': '100%',
+                                                    'height': '60px',
+                                                    'lineHeight': '60px',
+                                                    'borderWidth': '1px',
+                                                    'borderStyle': 'dashed',
+                                                    'borderRadius': '5px',
+                                                    'textAlign': 'center',
+                                                    'margin': '10px'
+                                                },
+                                                # Allow multiple files to be uploaded
+                                                multiple=False
+                                            )
+                    inner_part_.append(upload_child)
             else:
                 print(f"wrong path {image_filename}")
 
@@ -50,7 +70,7 @@ class InterestingClass:
             if path_exists(header_filename):
                 with open(header_filename, "r") as file:
                     for txt_line in file.readlines():
-                        header_child = html.H1(children=txt_line)
+                        header_child = html.H1(children=txt_line, contentEditable=str(self.sudo).lower(), id=f"header-{idx}")
                         inner_part_.append(header_child)
             else:
                 print(f"no header file {idx}")
@@ -58,7 +78,7 @@ class InterestingClass:
             if path_exists(body_filename):
                 with open(body_filename, "r") as file:
                     for txt_line in file.readlines():
-                        body_child = html.Li(children=txt_line)
+                        body_child = html.Li(children=txt_line, contentEditable=str(self.sudo).lower(), )
                         inner_part_.append(body_child)
             else:
                 print(f"no body file {idx}")
@@ -72,7 +92,8 @@ class InterestingClass:
                         inner_part_.append(html.Div("Більше інформації за посиланнями:"))
                     for ref_idx, txt_line in enumerate(lines_):
                         # ref_child = html.A(children=f"see {idx}.{ref_idx}", href=txt_line)
-                        ref_child = html.A(children=f"див. {ref_idx+1}): {txt_line}", href=txt_line)
+                        ref_child = html.A(children=f"див. {ref_idx+1}): {txt_line}", href=txt_line,
+                                           contentEditable=str(self.sudo).lower())
                         inner_part_.append(ref_child)
                         inner_part_.append(html.Br())
             else:

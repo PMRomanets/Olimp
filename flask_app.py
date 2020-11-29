@@ -116,6 +116,10 @@ interesting_d_obj = InterestingClass("/", "Наш досвід + Ваше баж
 interesting_d_app = interesting_d_obj.get_app(app, "/about_instructors_HH/")
 
 
+dir_ = path_join(asset_dir, "events")
+interesting_d_obj = InterestingClass("/", "УЧАСТЬ У ЗМАГАННЯХ — ЦЕ НЕПЕРЕСІЧНИЙ ДОСВІД, НЕЗАЛЕЖНО ВІД РЕЗУЛЬТАТУ", dir_, fig_ext="jpg", limit_objects_number=5)
+interesting_d_app = interesting_d_obj.get_app(app, "/events/")
+
 dir_ = path_join(asset_dir, "about_instructors_G")
 interesting_d_obj = InterestingClass("/", "Наш досвід + Ваше бажання = результат!", dir_, fig_ext="jpg", limit_objects_number=5)
 interesting_d_app = interesting_d_obj.get_app(app, "/about_instructors_G/")
@@ -129,10 +133,16 @@ dir_ = path_join(asset_dir, "about_equipment")
 interesting_d_obj = InterestingClass("/", "Комфорт, Ефективність, Безпека", dir_, fig_ext="jpg", limit_objects_number=5)
 interesting_d_app = interesting_d_obj.get_app(app, "/about_equipment/")
 
+
+dir_ = path_join(asset_dir, "about_politics")
+interesting_d_obj = InterestingClass("/", "Наш досвід + Ваше бажання = результат!", dir_, fig_ext="jpg", limit_objects_number=5)
+interesting_d_app = interesting_d_obj.get_app(app, "/about_politics/")
+
+
 contacts_obj = ContactsClass("/", "Вдячні за Вашу цікавіть до клубу! Зв'яжіться з нами!")
 contacts_app = contacts_obj.get_app(app, "/contacts/")
 # obj_main = Schedules(f"/home/", "НА ГОЛОВНУ")
 app_home = get_app(app, f"/")
 # app.add_url_rule('/favicon.ico', redirect_to=url_for('static', filename='favicon.ico'))
 if __name__ == '__main__':
-    app.run(port=5500, debug=True)
+    app.run(port=5550, debug=True)

@@ -216,11 +216,18 @@ class Schedules:
         @app.callback(Output('instructor_photo', 'children'),
                       [ Input('sport-types-radio', 'value'), Input('instructor-dropdown', 'value')])
         def update_figure(s_type, instructor):
-            image_filename = self._get_instructor_photo(s_type, instructor)
-            encoded_image_view = base64.b64encode(open(image_filename, 'rb').read())
-            title_ = parameter[s_type][instructor]
-            return html.Img(src=f'data:image/png;base64,{encoded_image_view.decode()}', className="photo_img",
-                         id="instructor_photo_id", n_clicks=0, title=title_)
+            try:
+                image_filename = self._get_instructor_photo(s_type, instructor)
+                encoded_image_view = base64.b64encode(open(image_filename, 'rb').read())
+                # print("update_figure:", s_type," ", instructor)
+                if instructor in parameter[s_type].keys():
+                    title_ = parameter[s_type][instructor]
+                else:
+                    title_ = ""
+                return html.Img(src=f'data:image/png;base64,{encoded_image_view.decode()}', className="photo_img",
+                             id="instructor_photo_id", n_clicks=0, title=title_)
+            except:
+                return ""
 
         #
         #
