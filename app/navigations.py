@@ -21,18 +21,18 @@ def get_sudo_navigation():
     dic_ = parameter["sport_types_inv"]
     for key_ in dic_.keys():
         sport_kind = dic_[key_]
-        folder = html.Li(html.A(sport_kind, href=f'/about_instructors_{key_}'))
+        folder = html.Li(html.A(sport_kind, href=f'/sudo_about_instructors_{key_}'))
         about_instructors.append(folder)
 
     about_dropdown = []
-    about_dropdown.append(html.Li(html.A('ІСТОРІЯ', href=f'/club_history/')))
+    about_dropdown.append(html.Li(html.A('ІСТОРІЯ', href=f'/sudo_club_history/')))
     # about_dropdown.append(get_dropdown_menu_item("ПРО ТРЕНЕРІВ", about_instructors_K, '/about_instructors_K/'))
-    about_dropdown.append(html.Li(html.A('ВНУТРІШНЯ ПОЛІТИКА', href=f'/about_politics')))
-    about_dropdown.append(html.Li(html.A('УСТАТКОВАНЯ ПРИМІЩЕННЯ', href=f'/about_equipment')))
+    about_dropdown.append(html.Li(html.A('ВНУТРІШНЯ ПОЛІТИКА', href=f'/sudo_about_politics')))
+    about_dropdown.append(html.Li(html.A('УСТАТКОВАНЯ ПРИМІЩЕННЯ', href=f'/sudo_about_equipment')))
 
     schedules_dropdown = []
     schedules_dropdown.append(html.Li(html.A('РОЗКЛАД ТРЕНУВАНЬ', href=f'/schedules/')))
-    schedules_dropdown.append(html.Li(html.A('ВАЖЛИВІ ПОДІЇ', href=f'/events/')))
+    schedules_dropdown.append(html.Li(html.A('ВАЖЛИВІ ПОДІЇ', href=f'/sudo_events/')))
     # schedules_dropdown.append(html.Li(html.A('ТРЕНЕРСЬКА', href=f'/staff_only/')))
 
     # additional_reports = []
