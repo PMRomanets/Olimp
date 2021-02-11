@@ -185,6 +185,7 @@ interesting_d_app = interesting_d_obj.get_app(app, "/events/")
 
 interesting_d_obj_s = InterestingClass("/stuff_room/", "УЧАСТЬ У ЗМАГАННЯХ — ЦЕ НЕПЕРЕСІЧНИЙ ДОСВІД, НЕЗАЛЕЖНО ВІД РЕЗУЛЬТАТУ", dir_, fig_ext="jpg", limit_objects_number=5, sudo=True)
 list_ = interesting_d_obj_s.get_app(app, "/sudo_events/")
+extra_files_lst += list_
 
 dir_ = path_join(asset_dir, "about_instructors_G")
 interesting_d_obj = InterestingClass("/", "Наш досвід + Ваше бажання = результат!", dir_, fig_ext="jpg", limit_objects_number=5)
