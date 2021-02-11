@@ -1,0 +1,1 @@
+http://olimp.pythonanywhere.com/schedules/

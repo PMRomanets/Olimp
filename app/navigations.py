@@ -11,6 +11,50 @@ class sec:
         return True
 
 
+def get_sudo_navigation():
+
+    user = str(flask_login.current_user)
+
+    ret = []
+
+    about_instructors = []
+    dic_ = parameter["sport_types_inv"]
+    for key_ in dic_.keys():
+        sport_kind = dic_[key_]
+        folder = html.Li(html.A(sport_kind, href=f'/about_instructors_{key_}'))
+        about_instructors.append(folder)
+
+    about_dropdown = []
+    about_dropdown.append(html.Li(html.A('ІСТОРІЯ', href=f'/club_history/')))
+    # about_dropdown.append(get_dropdown_menu_item("ПРО ТРЕНЕРІВ", about_instructors_K, '/about_instructors_K/'))
+    about_dropdown.append(html.Li(html.A('ВНУТРІШНЯ ПОЛІТИКА', href=f'/about_politics')))
+    about_dropdown.append(html.Li(html.A('УСТАТКОВАНЯ ПРИМІЩЕННЯ', href=f'/about_equipment')))
+
+    schedules_dropdown = []
+    schedules_dropdown.append(html.Li(html.A('РОЗКЛАД ТРЕНУВАНЬ', href=f'/schedules/')))
+    schedules_dropdown.append(html.Li(html.A('ВАЖЛИВІ ПОДІЇ', href=f'/events/')))
+    # schedules_dropdown.append(html.Li(html.A('ТРЕНЕРСЬКА', href=f'/staff_only/')))
+
+    # additional_reports = []
+    # additional_reports.append(html.Li(html.A('КОНТАКТИ', href=f'/contacts/')))
+    # additional_reports.append(html.Li(html.A('КОНТАКТИ', href=f'/interesting/')))
+    # additional_reports.append(html.Li(html.A('КОНТАКТИ', href=f'/stuff_only/')))
+
+    interesting_dropdown = []
+    interesting_dropdown.append(html.Li(html.A('СВІТ КАРАТЕ', href=f'/sudo_interesting_K/')))
+    interesting_dropdown.append(html.Li(html.A('СВІТ ЙОГИ', href=f'/sudo_interesting_Y/')))
+    interesting_dropdown.append(html.Li(html.A('СВІТ ТАНЦЮ', href=f'/sudo_interesting_D/')))
+    interesting_dropdown.append(html.Li(html.A('СВІТ АКРОБАТИКИ', href=f'/sudo_interesting_A/')))
+    ret.append(get_dropdown_menu_item("ПРО КЛУБ", about_dropdown, 'sudo_about/'))
+    ret.append(get_dropdown_menu_item("ПРО ТРЕНЕРІВ", about_instructors, 'sudo_about_instructors_K/'))
+    ret.append(get_dropdown_menu_item("НАШ КАЛЕНДАР", schedules_dropdown, 'sudo_calendar/'))
+    ret.append(get_dropdown_menu_item("РІЗНІ ЦІКАВИНКИ", interesting_dropdown, 'sudo_interesting/'))
+    ret.append(get_dropdown_menu_item("ЗБОРИ", [], 'sudo_summertime/'))
+    ret.append(get_dropdown_menu_item("ВИЙТИ З ТРЕНЕРСЬКОЇ", [], ''))
+
+
+    return ret
+
 
 def get_navigation():
 
@@ -45,6 +89,7 @@ def get_navigation():
     interesting_dropdown.append(html.Li(html.A('СВІТ КАРАТЕ', href=f'/interesting_K/')))
     interesting_dropdown.append(html.Li(html.A('СВІТ ЙОГИ', href=f'/interesting_Y/')))
     interesting_dropdown.append(html.Li(html.A('СВІТ ТАНЦЮ', href=f'/interesting_D/')))
+    interesting_dropdown.append(html.Li(html.A('СВІТ АКРОБАТИКИ', href=f'/interesting_A/')))
     ret.append(get_dropdown_menu_item("ПРО КЛУБ", about_dropdown, 'about/'))
     ret.append(get_dropdown_menu_item("ПРО ТРЕНЕРІВ", about_instructors, 'about_instructors_K/'))
     ret.append(get_dropdown_menu_item("НАШ КАЛЕНДАР", schedules_dropdown, 'calendar/'))

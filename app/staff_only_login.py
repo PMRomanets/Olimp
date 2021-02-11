@@ -132,11 +132,11 @@ class LoginProcess:
                 if tst != "None":
                     return flask.redirect(request.args.get("next"))
                 else:
-                    return flask.redirect(f"/stuff_room_{user_class}/")
+                    return flask.redirect(f"/stuff_room/")#flask.redirect(f"/stuff_room_{user_class}/")
             else:
-                return flask.redirect(f"/stuff_room_{user_class}/")
+                return flask.redirect(f"/stuff_room/")#flask.redirect(f"/stuff_room_{user_class}/")
         else:
             print("log in failed for: ", str(username).strip())
             print("user used the user '" + username + "'")
             print("login failed !")
-            return flask.redirect(f"/stuff_room_guest/")
+            return flask.redirect(f"/stuff_only/")
