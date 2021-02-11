@@ -27,7 +27,7 @@ def get_login_form_html():
              </style>
             <img src="data:image/png;base64,{encoded_image.decode()}" alt="logo" height="100" width="100">
             <br>
-                <h1>Вхід у тренерську спортиавного клубу "Олімп" (тест)</h1>
+                <h1>Вхід у тренерську спортивного клубу "Олімп" </h1>
             <br>
             <br>
             <h1>логін</h1>
