@@ -270,6 +270,8 @@ class InterestingClass:
             file_ = path_join(self.tmp_assets_dir_path, f"body{idx}.txt")
             print("_body_to_txt:")
             print(abspath(curdir))
+            print(path_exists(self.tmp_assets_dir_path))
+            print(path_exists(self.assets_dir_path))
             print(file_)
             print(abspath(__file__))
             print("body_to_txt end")
