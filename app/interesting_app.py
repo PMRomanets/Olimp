@@ -21,7 +21,7 @@ import base64
 import pandas as pd
 import dash_table as dt
 from urllib import parse
-from os.path import join as path_join
+from os.path import join as path_join, curdir, abspath
 from os.path import exists as path_exists
 from os.path import isfile, getsize
 from os import mkdir, remove, listdir
@@ -268,6 +268,11 @@ class InterestingClass:
 
         def _body_to_txt(idx, text):
             file_ = path_join(self.tmp_assets_dir_path, f"body{idx}.txt")
+            print("_body_to_txt:")
+            print(abspath(curdir))
+            print(file_)
+            print(abspath(__file__))
+            print("body_to_txt end")
             with open(file_, 'w') as f:
                 f.write(text)
 
