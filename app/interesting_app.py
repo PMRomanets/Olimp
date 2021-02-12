@@ -51,12 +51,18 @@ class InterestingClass:
             self.initial_source_path = self.assets_dir_path
 
     def _copy_all_to_tmp(self):
+        if not path_exists(self.tmp_assets_dir_path):
+            mkdir(self.tmp_assets_dir_path)
+
         for file in self._get_files_list():
             src_path = path_join(self.assets_dir_path, file)
             desc_path = path_join(self.tmp_assets_dir_path, file)
             shutil.copy(src_path, desc_path)
 
     def _copy_all_from_tmp(self):
+        if not path_exists(self.tmp_assets_dir_path):
+            mkdir(self.tmp_assets_dir_path)
+
         for file in self._get_tmp_files_list():
             src_path = path_join(self.tmp_assets_dir_path, file)
             if getsize(src_path) == 0:
@@ -65,11 +71,13 @@ class InterestingClass:
             shutil.copy(src_path, desc_path)
 
     def _delete_tmp(self):
-        shutil.rmtree(self.tmp_assets_dir_path)
-
-
+        if path_exists(self.tmp_assets_dir_path):
+            shutil.rmtree(self.tmp_assets_dir_path)
 
     def _empty_tmp(self):
+        if not path_exists(self.tmp_assets_dir_path):
+            mkdir(self.tmp_assets_dir_path)
+
         for file in self._get_tmp_files_list():
             target_path = path_join(self.tmp_assets_dir_path, file)
             remove(target_path)
@@ -78,7 +86,6 @@ class InterestingClass:
         for file in self._get_files_list():
             target_path = path_join(self.assets_dir_path, file)
             remove(target_path)
-
 
     def get_layout(self):
         # if self.sudo:
@@ -220,6 +227,8 @@ class InterestingClass:
 
     def _get_tmp_files_list(self):
         lst_ = []
+        if not path_exists(self.tmp_assets_dir_path):
+            mkdir(self.tmp_assets_dir_path)
         for file_ in listdir(self.tmp_assets_dir_path):
             file_a = path_join(self.tmp_assets_dir_path, file_)
             if isfile(file_a):
@@ -255,6 +264,8 @@ class InterestingClass:
                 return f'data:image/{self.fig_ext};base64,{encoded_image.decode()}'
 
         def _delete_figure(image_filename):
+            if not path_exists(self.tmp_assets_dir_path):
+                mkdir(self.tmp_assets_dir_path)
             image_abs_filename = path_join(self.tmp_assets_dir_path, image_filename)
             if path_exists(image_abs_filename):
                 remove(image_abs_filename)
@@ -262,11 +273,15 @@ class InterestingClass:
                 return image_filename
 
         def _header_to_txt(idx, text):
+            if not path_exists(self.tmp_assets_dir_path):
+                mkdir(self.tmp_assets_dir_path)
             file_ = path_join(self.tmp_assets_dir_path, f"header{idx}.txt")
             with open(file_, 'w') as f:
                 f.write(text)
 
         def _body_to_txt(idx, text):
+            if not path_exists(self.tmp_assets_dir_path):
+                mkdir(self.tmp_assets_dir_path)
             file_ = path_join(self.tmp_assets_dir_path, f"body{idx}.txt")
             print("_body_to_txt:")
             print(abspath(curdir))
@@ -279,6 +294,8 @@ class InterestingClass:
                 f.write(text)
 
         def _ref_to_txt(idx, text):
+            if not path_exists(self.tmp_assets_dir_path):
+                mkdir(self.tmp_assets_dir_path)
             file_ = path_join(self.tmp_assets_dir_path, f"ref{idx}.txt")
             with open(file_, 'w') as f:
                 f.write(text)
