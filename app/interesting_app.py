@@ -24,9 +24,10 @@ from urllib import parse
 from os.path import join as path_join, curdir, abspath
 from os.path import exists as path_exists
 from os.path import isfile, getsize
-from os import mkdir, remove, listdir
+from os import mkdir, remove, listdir, utime
 import shutil
-
+from time import sleep
+# from pathlib import Path
 
 class InterestingClass:
     def __init__(self,  home_url, title, assets_dir_path, fig_ext="png", limit_objects_number=3, sudo=False):
@@ -150,7 +151,7 @@ class InterestingClass:
                 if path_exists(header_filename):
                     with open(header_filename, "r") as file:
                         for txt_line in file.readlines():
-                            header_child = html.H1(children=txt_line, contentEditable=False, id=f"header-{idx}")
+                            header_child = html.H1(children=txt_line, contentEditable=False, id=f"header-text-{idx}")
                             inner_part_.append(header_child)
                 else:
                     print(f"no header file {idx}")
@@ -376,8 +377,6 @@ class InterestingClass:
                 _ref_to_txt(4, text)
                 return ""
 
-
-
             @app.callback(Output('get-default-output', 'value'),
                           [Input(f"btn-save-all-id", "n_clicks")])
             def save_all_button(n_cklicks):
@@ -385,6 +384,10 @@ class InterestingClass:
                     self._empty_assert()
                     self._copy_all_from_tmp()
                     self._delete_tmp()
+                    touch_file = parameter["touch_file"]
+                    if path_exists(touch_file):
+                        utime(touch_file, None)
+                        sleep(5)
                 return ""
 
             @app.callback(Output(f"img-id-1", 'src'),
@@ -427,8 +430,21 @@ class InterestingClass:
                 else:
                     self.images_status[4] = True
                     return ""
-
             #
+            # def update_delete(n_clicks, f_id):
+            #     if n_clicks > 0:
+            #         self.images_status[f_id] = False
+            #         return _delete_figure(f"fig{f_id}." + self.fig_ext)
+            #
+            # for f_id in range(1, self.limit_objects_number + 1):
+            #     f = lambda n_cl: update_delete(n_cl, f_id)
+            #     app.callback(
+            #         Output(f"images-list-id-{f_id}", 'children'),
+            #         [Input(f'btn-delete-{f_id}', 'n_clicks'),]
+            #     )(f)
+
+
+
             @app.callback(Output("images-list-id-1", 'children'), (Input(f'btn-delete-1', 'n_clicks'),))
             def delete_figures1(n_clicks):
                 if n_clicks > 0:
@@ -455,10 +471,12 @@ class InterestingClass:
 
 
         # return app
-        extra_files_lst = []
-        for file in self._get_files_list():
-            src_path = path_join(self.assets_dir_path, file)
-            extra_files_lst.append(src_path)
+        if self.sudo:
+            extra_files_lst = []
+            for file in self._get_files_list():
+                src_path = path_join(self.assets_dir_path, file)
+                extra_files_lst.append(src_path)
 
-        return extra_files_lst## test:
-
+            return extra_files_lst## test:
+        else:
+            return app
