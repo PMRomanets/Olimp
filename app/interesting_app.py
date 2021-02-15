@@ -12,15 +12,14 @@ from configs.config import parameter
 # import flask_login
 # from additional import security as sec
 from dash.dependencies import Input, Output, State
-# import flask
-import uuid
-import flask
-from os import remove
-from os.path import join as path_join
+# import uuid
+from flask import redirect
+# from os import remove
+# from os.path import join as path_join
 import base64
-import pandas as pd
-import dash_table as dt
-from urllib import parse
+# import pandas as pd
+# import dash_table as dt
+# from urllib import parse
 from os.path import join as path_join, curdir, abspath
 from os.path import exists as path_exists
 from os.path import isfile, getsize
@@ -377,7 +376,7 @@ class InterestingClass:
                 _ref_to_txt(4, text)
                 return ""
 
-            @app.callback(Output('get-default-output', 'value'),
+            @app.callback(Output('get-default-output', 'children'),
                           [Input(f"btn-save-all-id", "n_clicks")])
             def save_all_button(n_cklicks):
                 if n_cklicks is not None:
@@ -385,10 +384,11 @@ class InterestingClass:
                     self._copy_all_from_tmp()
                     self._delete_tmp()
                     touch_file = parameter["touch_file"]
+                    print("touch file", touch_file)
                     if path_exists(touch_file):
                         utime(touch_file, None)
                         sleep(5)
-                return ""
+                    return dcc.Location(pathname="/", id="09-99")
 
             @app.callback(Output(f"img-id-1", 'src'),
                           [Input(f"upload-data-1", "filename"),
