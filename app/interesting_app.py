@@ -151,7 +151,7 @@ class InterestingClass:
                 if path_exists(header_filename):
                     with open(header_filename, "r") as file:
                         for txt_line in file.readlines():
-                            header_child = html.H1(children=txt_line, contentEditable=False, id=f"header-text-{idx}")
+                            header_child = html.H1(children=txt_line, contentEditable=False)
                             inner_part_.append(header_child)
                 else:
                     print(f"no header file {idx}")
