@@ -7,11 +7,8 @@
 __pycache__/
 configs/config.json
 configs/*.json
-assets/*/*.txt
-assets/*/*.png
-assets/*/*.jpg
-assets/*/*.jpeg
 */*.png
 */*.jpg
 */*.jpeg
+*/*.txt
 
