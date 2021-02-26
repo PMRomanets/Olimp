@@ -26,6 +26,9 @@ from os.path import isfile, getsize
 from os import mkdir, remove, listdir, utime
 import shutil
 from time import sleep
+from dash.dependencies import ALL
+from datetime import datetime
+
 # from pathlib import Path
 
 class InterestingClass:
@@ -41,11 +44,6 @@ class InterestingClass:
         self.images_status = {img: True for img in range(1, limit_objects_number+1)}
         if (not path_exists(self.tmp_assets_dir_path)) and sudo:
             mkdir(self.tmp_assets_dir_path)
-
-        if sudo:
-            self._empty_tmp()
-            self._copy_all_to_tmp()
-
             self.initial_source_path = self.tmp_assets_dir_path
         else:
             self.initial_source_path = self.assets_dir_path
@@ -215,6 +213,14 @@ class InterestingClass:
             inner_part_.append(html.P("", id='save-all-output'))
             inner_part_.append(html.P("", id='get-default-output'))
         children_ = self.dummy.get_children(self.title, inner_part_)
+
+        children_.append(
+    html.Div([
+    dcc.Location(id='url', refresh=False),
+    html.Div(list("ABC"), id="data", style={"display":"none"}),
+    html.Div(id='page-content')
+        ]))
+
         return html.Div(children=children_)
 
     def _get_files_list(self):
@@ -400,7 +406,6 @@ class InterestingClass:
                     self.images_status[1] = True
                     return ""
 
-
             @app.callback(Output(f"img-id-2", 'src'),
                           [Input(f"upload-data-2", "filename"),
                            Input(f"upload-data-2", "contents"), Input("images-list-id-2", "children")])
@@ -442,8 +447,29 @@ class InterestingClass:
             #         Output(f"images-list-id-{f_id}", 'children'),
             #         [Input(f'btn-delete-{f_id}', 'n_clicks'),]
             #     )(f)
+            @app.callback(Output('page-content', 'children'),
+                          [Input('url', 'pathname')])
+            def display_page(pathname):
+                if self.sudo:
+                    if not path_exists(self.tmp_assets_dir_path):
+                        mkdir(self.tmp_assets_dir_path)
+                    elif len(self._get_tmp_files_list()) > 0:
+                        self._empty_tmp()
+                        self._copy_all_to_tmp()
+                        return """Увага, хтось не закінчив редагування сторінки. Тимчасові фали були видалені,
+                                щоб підготувати середовище для вас.
+                                 Уникайте одночасного редагування сторінок з іншими тренерами"""
+                    else:
+                        self._copy_all_to_tmp()
+                return ""
 
 
+            # @app.callback(
+            #     Output('dropdown-container-output', 'children'),
+            #     Input({'type': ALL, 'index': ALL}, ALL))
+            # def display_output(values):
+            #     print("I'm detecting changes...")
+            #     return ""
 
             @app.callback(Output("images-list-id-1", 'children'), (Input(f'btn-delete-1', 'n_clicks'),))
             def delete_figures1(n_clicks):
