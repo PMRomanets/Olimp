@@ -333,6 +333,11 @@ class InterestingClass:
                 _header_to_txt(4, text)
                 return ""
 
+            @app.callback(Output('header-output-5', 'value'),
+                          [Input(f"header-text-5", "value")])
+            def editing_header5(text):
+                _header_to_txt(5, text)
+                return ""
 
             @app.callback(Output('body-output-1', 'value'),
                           [Input(f"body-text-1", "value")])
@@ -358,6 +363,12 @@ class InterestingClass:
                 _body_to_txt(4, text)
                 return ""
 
+            @app.callback(Output('body-output-5', 'value'),
+                          [Input(f"body-text-5", "value")])
+            def editing_body5(text):
+                _body_to_txt(5, text)
+                return ""
+
             @app.callback(Output('ref-output-1', 'value'),
                           [Input(f"ref-text-1", "value")])
             def editing_ref1(text):
@@ -380,6 +391,12 @@ class InterestingClass:
                           [Input(f"ref-text-4", "value")])
             def editing_ref4(text):
                 _ref_to_txt(4, text)
+                return ""
+
+            @app.callback(Output('ref-output-5', 'value'),
+                          [Input(f"ref-text-5", "value")])
+            def editing_ref5(text):
+                _ref_to_txt(5, text)
                 return ""
 
             @app.callback(Output('get-default-output', 'children'),
@@ -435,6 +452,16 @@ class InterestingClass:
                 else:
                     self.images_status[4] = True
                     return ""
+
+            @app.callback(Output(f"img-id-5", 'src'),
+                          [Input(f"upload-data-5", "filename"),
+                           Input(f"upload-data-5", "contents"), Input("images-list-id-5", "children")])
+            def upload_figure(image_filename, image_data, image_status):
+                if self.images_status[5]:
+                    return _upload_figure("fig4." + self.fig_ext, image_data)
+                else:
+                    self.images_status[5] = True
+                    return ""
             #
             # def update_delete(n_clicks, f_id):
             #     if n_clicks > 0:
@@ -464,12 +491,6 @@ class InterestingClass:
                 return ""
 
 
-            # @app.callback(
-            #     Output('dropdown-container-output', 'children'),
-            #     Input({'type': ALL, 'index': ALL}, ALL))
-            # def display_output(values):
-            #     print("I'm detecting changes...")
-            #     return ""
 
             @app.callback(Output("images-list-id-1", 'children'), (Input(f'btn-delete-1', 'n_clicks'),))
             def delete_figures1(n_clicks):
@@ -495,6 +516,11 @@ class InterestingClass:
                     self.images_status[4] = False
                     return _delete_figure("fig4." + self.fig_ext)
 
+            @app.callback(Output("images-list-id-5", 'children'), (Input(f'btn-delete-5', 'n_clicks'),))
+            def delete_figures5(n_clicks):
+                if n_clicks > 0:
+                    self.images_status[5] = False
+                    return _delete_figure("fig5." + self.fig_ext)
 
         # return app
         if self.sudo:
