@@ -405,7 +405,7 @@ class InterestingClass:
                 if n_cklicks is not None:
                     self._empty_assert()
                     self._copy_all_from_tmp()
-                    self._delete_tmp()
+                    # self._delete_tmp()
                     touch_file = parameter["touch_file"]
                     print("touch file", touch_file)
                     if path_exists(touch_file):
