@@ -109,7 +109,7 @@ interesting_k_app = interesting_k_obj.get_app(app, "/interesting_K/")
 
 interesting_k_obj_s = InterestingClass("/", "Цікавинки карате", dir_, fig_ext="jpeg", limit_objects_number=5, sudo=True)
 list_ = interesting_k_obj_s.get_app(app, "/sudo_interesting_K/")
-extra_files_lst += list_
+#extra_files_lst += list_
 
 dir_ = path_join(asset_dir, "interesting_Y")
 interesting_y_obj = InterestingClass("/", "Цікавинки йоги", dir_, fig_ext="jpeg", limit_objects_number=5)
@@ -118,7 +118,7 @@ interesting_y_app = interesting_y_obj.get_app(app, "/interesting_Y/")
 interesting_y_obj_s = InterestingClass("/", "Цікавинки йоги", dir_, fig_ext="jpeg", limit_objects_number=5, sudo=True)
 list_ = interesting_y_obj_s.get_app(app, "/sudo_interesting_Y/")
 
-extra_files_lst += list_
+#extra_files_lst += list_
 
 dir_ = path_join(asset_dir, "interesting_D")
 
@@ -127,7 +127,7 @@ interesting_d_app = interesting_d_obj.get_app(app, "/interesting_D/")
 
 interesting_d_obj_s = InterestingClass("/stuff_room/", "Цікавинки у світі танцю", dir_, fig_ext="jpeg", limit_objects_number=3, sudo=True)
 list_ = interesting_d_obj_s.get_app(app, "/sudo_interesting_D/")
-extra_files_lst += list_
+#extra_files_lst += list_
 
 dir_ = path_join(asset_dir, "interesting_A")
 interesting_d_obj = InterestingClass("/", "Цікавинки у світі акробатики", dir_, fig_ext="jpeg", limit_objects_number=3)
@@ -135,7 +135,7 @@ interesting_d_app = interesting_d_obj.get_app(app, "/interesting_A/")
 
 interesting_d_obj_s = InterestingClass("/stuff_room/", "Цікавинки у світі акробатики", dir_, fig_ext="jpeg", limit_objects_number=3, sudo=True)
 list_ = interesting_d_obj_s.get_app(app, "/sudo_interesting_A/")
-extra_files_lst += list_
+#extra_files_lst += list_
 
 dir_ = path_join(asset_dir, "summertime")
 interesting_d_obj = InterestingClass("/", "Літній відпочинок та тренування...", dir_, fig_ext="jpg", limit_objects_number=5)
@@ -143,7 +143,7 @@ interesting_d_app = interesting_d_obj.get_app(app, "/summertime/")
 
 interesting_d_obj_s = InterestingClass("/stuff_room/", "Літній відпочинок та тренування...", dir_, fig_ext="jpg", limit_objects_number=5, sudo=True)
 list_ = interesting_d_obj_s.get_app(app, "/sudo_summertime/")
-extra_files_lst += list_
+#extra_files_lst += list_
 
 dir_ = path_join(asset_dir, "club_history")
 interesting_d_obj = InterestingClass("/", "Втілюйте мрії у життя разом з нами!", dir_, fig_ext="jpg", limit_objects_number=5)
@@ -152,7 +152,7 @@ interesting_d_app = interesting_d_obj.get_app(app, "/club_history/")
 
 interesting_d_obj_s = InterestingClass("/stuff_room/", "Втілюйте мрії у життя разом з нами!", dir_, fig_ext="jpg", limit_objects_number=5, sudo=True)
 list_ = interesting_d_obj_s.get_app(app, "/sudo_club_history/")
-extra_files_lst += list_
+#extra_files_lst += list_
 
 dir_ = path_join(asset_dir, "about_instructors_K")
 interesting_d_obj = InterestingClass("/", "Наш досвід + Ваше бажання = результат!", dir_, fig_ext="jpg", limit_objects_number=5)
@@ -160,7 +160,7 @@ interesting_d_app = interesting_d_obj.get_app(app, "/about_instructors_K/")
 
 interesting_d_obj_s = InterestingClass("/stuff_room/", "Наш досвід + Ваше бажання = результат!", dir_, fig_ext="jpg", limit_objects_number=5, sudo=True)
 list_ = interesting_d_obj_s.get_app(app, "/sudo_about_instructors_K/")
-extra_files_lst += list_
+#extra_files_lst += list_
 
 dir_ = path_join(asset_dir, "about_instructors_Y")
 interesting_d_obj = InterestingClass("/", "Наш досвід + Ваше бажання = результат!", dir_, fig_ext="jpg", limit_objects_number=5)
@@ -168,7 +168,7 @@ interesting_d_app = interesting_d_obj.get_app(app, "/about_instructors_Y/")
 
 interesting_d_obj_s = InterestingClass("/stuff_room/", "Наш досвід + Ваше бажання = результат!", dir_, fig_ext="jpg", limit_objects_number=5, sudo=True)
 list_ = interesting_d_obj_s.get_app(app, "/sudo_about_instructors_Y/")
-extra_files_lst += list_
+#extra_files_lst += list_
 
 dir_ = path_join(asset_dir, "about_instructors_HH")
 interesting_d_obj = InterestingClass("/", "Наш досвід + Ваше бажання = результат!", dir_, fig_ext="jpg", limit_objects_number=5)
@@ -176,7 +176,7 @@ interesting_d_app = interesting_d_obj.get_app(app, "/about_instructors_HH/")
 
 interesting_d_obj_s = InterestingClass("/stuff_room/", "Наш досвід + Ваше бажання = результат!", dir_, fig_ext="jpg", limit_objects_number=5, sudo=True)
 list_ = interesting_d_obj_s.get_app(app, "/sudo_about_instructors_HH/")
-extra_files_lst += list_
+#extra_files_lst += list_
 
 
 dir_ = path_join(asset_dir, "events")
@@ -185,7 +185,7 @@ interesting_d_app = interesting_d_obj.get_app(app, "/events/")
 
 interesting_d_obj_s = InterestingClass("/stuff_room/", "УЧАСТЬ У ЗМАГАННЯХ — ЦЕ НЕПЕРЕСІЧНИЙ ДОСВІД, НЕЗАЛЕЖНО ВІД РЕЗУЛЬТАТУ", dir_, fig_ext="jpg", limit_objects_number=5, sudo=True)
 list_ = interesting_d_obj_s.get_app(app, "/sudo_events/")
-extra_files_lst += list_
+#extra_files_lst += list_
 
 dir_ = path_join(asset_dir, "about_instructors_G")
 interesting_d_obj = InterestingClass("/", "Наш досвід + Ваше бажання = результат!", dir_, fig_ext="jpg", limit_objects_number=5)
@@ -193,7 +193,7 @@ interesting_d_app = interesting_d_obj.get_app(app, "/about_instructors_G/")
 
 interesting_d_obj = InterestingClass("/stuff_room/", "Наш досвід + Ваше бажання = результат!", dir_, fig_ext="jpg", limit_objects_number=5, sudo=True)
 list_ = interesting_d_obj.get_app(app, "/sudo_about_instructors_G/")
-extra_files_lst += list_
+#extra_files_lst += list_
 
 
 dir_ = path_join(asset_dir, "about_instructors_SH")
@@ -203,7 +203,7 @@ interesting_d_app = interesting_d_obj.get_app(app, "/about_instructors_SH/")
 
 interesting_d_obj = InterestingClass("/stuff_room/", "Наш досвід + Ваше бажання = результат!", dir_, fig_ext="jpg", limit_objects_number=5, sudo=True)
 list_ = interesting_d_obj.get_app(app, "/sudo_about_instructors_SH/")
-extra_files_lst += list_
+#extra_files_lst += list_
 
 dir_ = path_join(asset_dir, "about_instructors_A")
 interesting_d_obj = InterestingClass("/", "Наш досвід + Ваше бажання = результат!", dir_, fig_ext="jpg", limit_objects_number=5)
@@ -212,7 +212,7 @@ interesting_d_app = interesting_d_obj.get_app(app, "/about_instructors_A/")
 
 interesting_d_obj = InterestingClass("/stuff_room/", "Наш досвід + Ваше бажання = результат!", dir_, fig_ext="jpg", limit_objects_number=5, sudo=True)
 list_ = interesting_d_obj.get_app(app, "/sudo_about_instructors_A/")
-extra_files_lst += list_
+#extra_files_lst += list_
 
 
 dir_ = path_join(asset_dir, "about_equipment")
@@ -221,7 +221,7 @@ interesting_d_app = interesting_d_obj.get_app(app, "/about_equipment/")
 
 interesting_d_obj = InterestingClass("/stuff_room/", "Комфорт, Ефективність, Безпека", dir_, fig_ext="jpg", limit_objects_number=5, sudo=True)
 list_ = interesting_d_obj.get_app(app, "/sudo_about_equipment/")
-extra_files_lst += list_
+#extra_files_lst += list_
 
 dir_ = path_join(asset_dir, "about_politics")
 interesting_d_obj = InterestingClass("/", "Наш досвід + Ваше бажання = результат!", dir_, fig_ext="jpg", limit_objects_number=5)
@@ -230,7 +230,7 @@ interesting_d_app = interesting_d_obj.get_app(app, "/about_politics/")
 dir_ = path_join(asset_dir, "about_politics")
 interesting_d_obj = InterestingClass("/stuff_room/", "Наш досвід + Ваше бажання = результат!", dir_, fig_ext="jpg", limit_objects_number=5, sudo=True)
 list_ = interesting_d_obj.get_app(app, "/sudo_about_politics/")
-extra_files_lst += list_
+#extra_files_lst += list_
 
 contacts_obj = ContactsClass("/", "Вдячні за Вашу цікавіть до клубу! Зв'яжіться з нами!")
 contacts_app = contacts_obj.get_app(app, "/contacts/")
@@ -239,4 +239,4 @@ app_home = get_app(app, "/")
 app_home_sudo = get_sudo_app(app, "/stuff_room/")
 # app.add_url_rule('/favicon.ico', redirect_to=url_for('static', filename='favicon.ico'))
 if __name__ == '__main__':
-    app.run(port=5550, debug=True, extra_files=extra_files_lst)
+    app.run(port=5550, debug=True)#, extra_files=extra_files_lst)

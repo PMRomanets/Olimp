@@ -215,45 +215,27 @@ class InterestingClass:
 
             else:
                 text_ = ""
-            ref_child = dcc.Textarea(value=text_, id="ref-youtube", style={'width': '100%', 'height': 720})
+            ref_child = dcc.Textarea(value=text_, id="ref-youtube", style={'width': '100%', 'height':720})
             inner_part_.append(ref_child)
             inner_part_.append(html.P("", id='ref-youtube-output'))
         else:
             if path_exists(ref_filename):
+                # inner_part_.append(html.Div("Радимо для перегляду (джерело-youtube):"))
                 with open(ref_filename, "r") as file:
                     text_ = file.read()
-                    s = "https://www.youtube.com/embed/" + text_.split("/")[-1].split("v=")[-1]
+                    s = "https://www.youtube.com/embed/" + text_.split("/")[-1]
                     inner_part_.append(html.Div("Радимо для перегляду (джерело-youtube):"))
                     inner_part_.append(html.Embed(src=s, width=1280, height=720))
             else:
                 s = ""
-##################################################################
-        # if self.sudo:
-        #     inner_part_.append(html.Div("Радимо для перегляду:"))
-        #     if path_exists(ref_filename):
-        #         with open(ref_filename, "r") as file:
-        #             text_ = file.readline(1)
-        #             s = text_.split("/")[-1]
-        #     else:
-        #         text_ = ""
-        #     ref_child = dcc.Textarea(value=text_, id="ref-my-video", style={'width': '100%', 'height': 720})
-        #     inner_part_.append(ref_child)
-        #     inner_part_.append(html.P("", id='ref-my-video-output'))
-        # else:
-        #     if path_exists(ref_filename):
-        #         with open(ref_filename, "r") as file:
-        #             text_ = file.read()
-        #             s = "https://www.youtube.com/embed/" + text_.split("/")[-1].split("v=")[-1]
-        #             inner_part_.append(html.Div("Радимо для перегляду:"))
-        #             inner_part_.append(html.Embed(src=s, width=1280, height=720))
-        #     else:
-        #         s = ""
-##################################################################
+
         if self.sudo:
             inner_part_.append(html.A(html.Button(parameter["sudo_get_default_name"]), href=self.url))
             inner_part_.append(html.Button(parameter["sudo_save_all_name"], id='btn-save-all-id'))
             inner_part_.append(html.P("", id='save-all-output'))
             inner_part_.append(html.P("", id='get-default-output'))
+
+
         children_ = self.dummy.get_children(self.title, inner_part_)
 
         children_.append(
@@ -283,14 +265,13 @@ class InterestingClass:
                 lst_.append(file_)
         return lst_
 
-
     def get_app(self, server, url):
         self.url = url
         app = Dash(__name__, url_base_pathname=url, server=server, assets_folder=parameter["assets_dir"])
-        app.css.config.serve_locally = True
-        app.scripts.config.serve_locally = True
+        # app.css.config.serve_locally = True
+        # app.scripts.config.serve_locally = True
         app.layout = self.get_layout()
-        app.config['suppress_callback_exceptions'] = False
+        # app.config['suppress_callback_exceptions'] = False
 
         #
         ################################################################
@@ -387,6 +368,43 @@ class InterestingClass:
                 _header_to_txt(5, text)
                 return ""
 
+            @app.callback(Output('header-output-5', 'value'),
+                          [Input(f"header-text-5", "value")])
+            def editing_header5(text):
+                _header_to_txt(5, text)
+                return ""
+
+            # @app.callback(Output('header-output-6', 'value'),
+            #               [Input(f"header-text-6", "value")])
+            # def editing_header6(text):
+            #     _header_to_txt(6, text)
+            #     return ""
+            #
+            # @app.callback(Output('header-output-7', 'value'),
+            #               [Input(f"header-text-7", "value")])
+            # def editing_header7(text):
+            #     _header_to_txt(7, text)
+            #     return ""
+            #
+            # @app.callback(Output('header-output-8', 'value'),
+            #               [Input(f"header-text-8", "value")])
+            # def editing_header8(text):
+            #     _header_to_txt(8, text)
+            #     return ""
+            #
+            # @app.callback(Output('header-output-9', 'value'),
+            #               [Input(f"header-text-9", "value")])
+            # def editing_header9(text):
+            #     _header_to_txt(9, text)
+            #     return ""
+            #
+            # @app.callback(Output('header-output-10', 'value'),
+            #               [Input(f"header-text-10", "value")])
+            # def editing_header10(text):
+            #     _header_to_txt(10, text)
+            #     return ""
+
+
             @app.callback(Output('body-output-1', 'value'),
                           [Input(f"body-text-1", "value")])
             def editing_body1(text):
@@ -417,6 +435,44 @@ class InterestingClass:
                 _body_to_txt(5, text)
                 return ""
 
+            # @app.callback(Output('body-output-6', 'value'),
+            #               [Input(f"body-text-6", "value")])
+            # def editing_body6(text):
+            #     _body_to_txt(6, text)
+            #     return ""
+            #
+            # @app.callback(Output('body-output-7', 'value'),
+            #               [Input(f"body-text-7", "value")])
+            # def editing_body7(text):
+            #     _body_to_txt(7, text)
+            #     return ""
+            #
+            # @app.callback(Output('body-output-8', 'value'),
+            #               [Input(f"body-text-8", "value")])
+            # def editing_body8(text):
+            #     _body_to_txt(8, text)
+            #     return ""
+            #
+            # @app.callback(Output('body-output-9', 'value'),
+            #               [Input(f"body-text-9", "value")])
+            # def editing_body9(text):
+            #     _body_to_txt(9, text)
+            #     return ""
+
+            # @app.callback(Output('body-output-10', 'value'),
+            #               [Input(f"body-text-10", "value")])
+            # def editing_body10(text):
+            #     _body_to_txt(10, text)
+            #     return ""
+
+            # ref - youtube
+            @app.callback(Output('ref-youtube-output', 'value'),
+                          [Input(f"ref-youtube", "value")])
+            def editing_ref_youtube(text):
+                _ref_youtube_to_txt(text)
+                return ""
+
+
             @app.callback(Output('ref-output-1', 'value'),
                           [Input(f"ref-text-1", "value")])
             def editing_ref1(text):
@@ -446,6 +502,36 @@ class InterestingClass:
             def editing_ref5(text):
                 _ref_to_txt(5, text)
                 return ""
+
+            # @app.callback(Output('ref-output-6', 'value'),
+            #               [Input(f"ref-text-6", "value")])
+            # def editing_ref6(text):
+            #     _ref_to_txt(6, text)
+            #     return ""
+            #
+            # @app.callback(Output('ref-output-7', 'value'),
+            #               [Input(f"ref-text-7", "value")])
+            # def editing_ref7(text):
+            #     _ref_to_txt(7, text)
+            #     return ""
+            #
+            # @app.callback(Output('ref-output-8', 'value'),
+            #               [Input(f"ref-text-8", "value")])
+            # def editing_ref8(text):
+            #     _ref_to_txt(8, text)
+            #     return ""
+            #
+            # @app.callback(Output('ref-output-9', 'value'),
+            #               [Input(f"ref-text-9", "value")])
+            # def editing_ref9(text):
+            #     _ref_to_txt(9, text)
+            #     return ""
+            #
+            # @app.callback(Output('ref-output-10', 'value'),
+            #               [Input(f"ref-text-10", "value")])
+            # def editing_ref10(text):
+            #     _ref_to_txt(10, text)
+            #     return ""
 
             @app.callback(Output('get-default-output', 'children'),
                           [Input(f"btn-save-all-id", "n_clicks")])
@@ -506,22 +592,51 @@ class InterestingClass:
                            Input(f"upload-data-5", "contents"), Input("images-list-id-5", "children")])
             def upload_figure(image_filename, image_data, image_status):
                 if self.images_status[5]:
-                    return _upload_figure("fig4." + self.fig_ext, image_data)
+                    return _upload_figure("fig5." + self.fig_ext, image_data)
                 else:
                     self.images_status[5] = True
                     return ""
             #
-            # def update_delete(n_clicks, f_id):
-            #     if n_clicks > 0:
-            #         self.images_status[f_id] = False
-            #         return _delete_figure(f"fig{f_id}." + self.fig_ext)
+            # @app.callback(Output(f"img-id-6", 'src'),
+            #               [Input(f"upload-data-6", "filename"),
+            #                Input(f"upload-data-6", "contents"), Input("images-list-id-6", "children")])
+            # def upload_figure(image_filename, image_data, image_status):
+            #     if self.images_status[6]:
+            #         return _upload_figure("fig6." + self.fig_ext, image_data)
+            #     else:
+            #         self.images_status[6] = True
+            #         return ""
             #
-            # for f_id in range(1, self.limit_objects_number + 1):
-            #     f = lambda n_cl: update_delete(n_cl, f_id)
-            #     app.callback(
-            #         Output(f"images-list-id-{f_id}", 'children'),
-            #         [Input(f'btn-delete-{f_id}', 'n_clicks'),]
-            #     )(f)
+            # @app.callback(Output(f"img-id-7", 'src'),
+            #               [Input(f"upload-data-7", "filename"),
+            #                Input(f"upload-data-7", "contents"), Input("images-list-id-7", "children")])
+            # def upload_figure(image_filename, image_data, image_status):
+            #     if self.images_status[7]:
+            #         return _upload_figure("fig7." + self.fig_ext, image_data)
+            #     else:
+            #         self.images_status[7] = True
+            #         return ""
+            #
+            # @app.callback(Output(f"img-id-8", 'src'),
+            #               [Input(f"upload-data-8", "filename"),
+            #                Input(f"upload-data-8", "contents"), Input("images-list-id-8", "children")])
+            # def upload_figure(image_filename, image_data, image_status):
+            #     if self.images_status[8]:
+            #         return _upload_figure("fig8." + self.fig_ext, image_data)
+            #     else:
+            #         self.images_status[8] = True
+            #         return ""
+            #
+            # @app.callback(Output(f"img-id-9", 'src'),
+            #               [Input(f"upload-data-9", "filename"),
+            #                Input(f"upload-data-9", "contents"), Input("images-list-id-9", "children")])
+            # def upload_figure(image_filename, image_data, image_status):
+            #     if self.images_status[9]:
+            #         return _upload_figure("fig9." + self.fig_ext, image_data)
+            #     else:
+            #         self.images_status[9] = True
+            #         return ""
+
             @app.callback(Output('page-content', 'children'),
                           [Input('url', 'pathname')])
             def display_page(pathname):
@@ -570,11 +685,35 @@ class InterestingClass:
                     self.images_status[5] = False
                     return _delete_figure("fig5." + self.fig_ext)
 
-            @app.callback(Output('ref-youtube-output', 'value'),
-                          [Input(f"ref-youtube", "value")])
-            def editing_ref_youtube(text):
-                _ref_youtube_to_txt(text)
-                return ""
+            # @app.callback(Output("images-list-id-6", 'children'), (Input(f'btn-delete-6', 'n_clicks'),))
+            # def delete_figures6(n_clicks):
+            #     if n_clicks > 0:
+            #         self.images_status[6] = False
+            #         return _delete_figure("fig6." + self.fig_ext)
+            #
+            # @app.callback(Output("images-list-id-7", 'children'), (Input(f'btn-delete-7', 'n_clicks'),))
+            # def delete_figures7(n_clicks):
+            #     if n_clicks > 0:
+            #         self.images_status[7] = False
+            #         return _delete_figure("fig7." + self.fig_ext)
+            #
+            # @app.callback(Output("images-list-id-8", 'children'), (Input(f'btn-delete-8', 'n_clicks'),))
+            # def delete_figures8(n_clicks):
+            #     if n_clicks > 0:
+            #         self.images_status[8] = False
+            #         return _delete_figure("fig8." + self.fig_ext)
+            #
+            # @app.callback(Output("images-list-id-9", 'children'), (Input(f'btn-delete-9', 'n_clicks'),))
+            # def delete_figures9(n_clicks):
+            #     if n_clicks > 0:
+            #         self.images_status[9] = False
+            #         return _delete_figure("fig9." + self.fig_ext)
+            #
+            # @app.callback(Output("images-list-id-10", 'children'), (Input(f'btn-delete-10', 'n_clicks'),))
+            # def delete_figures10(n_clicks):
+            #     if n_clicks > 0:
+            #         self.images_status[10] = False
+            #         return _delete_figure("fig10." + self.fig_ext)
 
         # return app
         if self.sudo:
@@ -583,6 +722,6 @@ class InterestingClass:
                 src_path = path_join(self.assets_dir_path, file)
                 extra_files_lst.append(src_path)
 
-            return extra_files_lst## test:
+            return app## test:
         else:
             return app

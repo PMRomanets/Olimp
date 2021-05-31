@@ -49,7 +49,8 @@ class ContactsClass:
 
         inner_part_.append(table)
         inner_part_.append(html.Br())
-
+        # map_html = "<iframe src=\"https://www.google.com/maps/d/u/0/embed?mid=1tl1LmxhIp0uPd0h0e3-9uW2_QoXiCSnq\" width="640" height="480"></iframe>"
+        inner_part_.append(html.Embed(src="https://www.google.com/maps/d/u/0/embed?mid=1tl1LmxhIp0uPd0h0e3-9uW2_QoXiCSnq", width="640", height="480"))
 ###################
         # mymap = Map(
         #     identifier="view-side",
